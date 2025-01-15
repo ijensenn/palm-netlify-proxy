@@ -1,12 +1,23 @@
 import { Context } from "@netlify/edge-functions";
 
+// edge functions env
+// const CONFIG = {
+//   MAX_PROXY_DEPTH: Netlify.environ.get("MAX_PROXY_DEPTH") || 5,
+//   REQUEST_TIMEOUT_MS: Netlify.environ.get("REQUEST_TIMEOUT_MS") || 8000,
+//   ProxyChain: 'x-proxy-chain',
+//   LoopCount: 'x-loop-count', 
+//   TargetURL: 'x-target-url',
+//   HashMap: Netlify.env.get("HashAuth") || 'xxx-xxx',
+// };
+
+// functions env
 const CONFIG = {
-  MAX_PROXY_DEPTH: Netlify.environ.get("MAX_PROXY_DEPTH") || 5,
-  REQUEST_TIMEOUT_MS: Netlify.environ.get("REQUEST_TIMEOUT_MS") || 8000,
+  MAX_PROXY_DEPTH: process.env.MAX_PROXY_DEPTH || 5,
+  REQUEST_TIMEOUT_MS: process.env.REQUEST_TIMEOUT_MS || 8000,
   ProxyChain: 'x-proxy-chain',
   LoopCount: 'x-loop-count', 
   TargetURL: 'x-target-url',
-  HashMap: Netlify.env.get("HashAuth") || 'xxx-xxx',
+  HashMap: process.env.HashAuth || 'xxx-xxx',
 };
 
 const headersToDelete = [
